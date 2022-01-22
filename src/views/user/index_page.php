@@ -10,6 +10,7 @@ $user = new UserClasses();
 $wallet = new WalletClasses();
 $cripto = new CriptoClasses();
 
+
 foreach ($wallet->selectWalletByIdUser() as $wallet) {
   if ($wallet['using'] == '1') {
     $_SESSION['using_wallet'] = $wallet['id_wallet'];
