@@ -1,0 +1,45 @@
+<?php
+$create_graph = new CriptoClasses();
+$i = 0;
+foreach ($create_graph->selectLastTransactions($id_cripto) as $create_chart) {
+    $values[$i] = $create_chart['price_paid_log'];
+    $months[$i] = date("m", strtotime($create_chart['date_log']));
+    $i = $i + 1;
+}
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        const list = <?= $values ?>;
+        var i = 0;
+        var data = google.visualization.arrayToDataTable([
+            ['Price', 'Price'],
+            ['January', <?= $values[0] ?>],
+            ['February', <?= $values[1] ?>],
+            ['March', <?= $values[2] ?>],
+            ['April', <?= $values[3] ?>],
+            ['May', <?= $values[4] ?>],
+
+        ]);
+
+        var options = {
+            hAxis: {
+                title: 'Month',
+                titleTextStyle: {
+                    color: '#333'
+                }
+            },
+            vAxis: {
+                minValue: 0
+            }
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>

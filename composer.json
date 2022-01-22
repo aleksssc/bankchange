@@ -1,0 +1,18 @@
+{
+    "name": "alex/management-system",
+    "description": "System to manage users account",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Alex\\ManagementSystem\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexandre Cardinha",
+            "email": "alexcardinha14@gmail.com"
+        }
+    ],
+    "require": {}
+}
